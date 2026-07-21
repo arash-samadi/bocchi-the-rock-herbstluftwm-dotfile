@@ -1,0 +1,51 @@
+#!/bin/sh
+herbstclient add 1
+herbstclient add 2
+terminal=alacritty
+mod=Mod4
+
+herbstclient set default_frame_layout 2
+herbstclient pad 0 35 0 0 0
+herbstclient set window_gap 12
+herbstclient set focus_follows_mouse 1
+herbstclient set frame_bg_transparent 1
+herbstclient set frame_border_width 0
+herbstclient set frame_padding 0
+herbstclient attr theme.default.active.color '#2755ab'
+herbstclient attr theme.default.normal.color '#223672'
+herbstclient set window_border_width 1
+herbstclient set_layout grid
+herbstclient rule class=xwinwrap manage=off
+
+$terminal &
+xrandr --output eDP-1 --mode 1920x1080 --rate 144.00 &
+pkill -9 feh
+feh --bg-fill /home/void/background.png
+avizo-service &
+pkill -q polybar
+~/.config/polybar/launch.sh &
+picom --config ~/.config/picom/picom.conf &
+/usr/lib/x86_64-linux-gnu/polkit-mate-authentication-agent-1 &
+pkill -9 -f pipewire
+pkill -9 -f wireplumber
+pipewire &
+sleep 1
+pipewire-pulse &
+sleep 1
+wireplumber &
+
+herbstclient keybind $mod-Return spawn alacritty
+herbstclient keybind $mod-q close
+herbstclient keybind $mod-r reload
+herbstclient keybind $mod-f floating toggle
+herbstclient keybind $mod-space  spawn rofi -show drun
+herbstclient keybind $mod-backslash rotate
+herbstclient keybind $mod-Tab cycle_layout +1
+herbstclient keybind Print spawn flameshot gui
+herbstclient keybind $mod-Left  use_index -1 --skip-visible
+herbstclient keybind $mod-Right use_index +1 --skip-visible
+herbstclient keybind $mod-Shift-Left  move_index -1 --skip-visible
+herbstclient keybind $mod-Shift-Right move_index +1 --skip-visible
+
+# no bocchi no life
+

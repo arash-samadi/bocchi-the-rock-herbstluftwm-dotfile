@@ -1,0 +1,49 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+"logo": {
+	"type": "file",
+	"source": "/home/void/.config/fastfetch/my_logo.txt",
+        "color": {
+            "1": null,
+            "2": "white"
+        },
+        "padding": {
+            "top": 1,
+            "right": 4
+        }
+    },
+    "display": {
+        "separator": " ➜ ",
+        "color": "blue",
+        "constants": [
+            "blue"
+        ],
+        "key": {
+            "width": 12
+        }
+    },
+"modules": [
+        "break",
+        { "type": "os", "key": "OS" },
+        { 
+            "type": "gpu", 
+            "hideType": "integrated", 
+            "key": "GPU", 
+            "format": "{name}" 
+        },
+        { "type": "cpu", "format": "11th Gen Intel i5", "key": "CPU" },
+        { "type": "memory", "key": "RAM" },
+        { "type": "wm", "key": "WM" },
+        {
+            "type": "custom",
+            "key": "fact",
+            "keyColor": "blue",
+            "format": "no bocchi no life"
+        },
+        "break",
+        {
+            "type": "colors",
+            "symbol": ""
+        }
+    ]
+}
