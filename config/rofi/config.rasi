@@ -1,0 +1,119 @@
+configuration {
+    modi: "drun";
+    show-icons: true;
+    display-drun: " ";
+}
+
+@theme "/dev/null"
+
+* {
+    fg: #ffffff;
+    black: #000000;
+    transparent: rgba(0, 0, 0, 0);
+
+    background-color: @transparent;
+    text-color: @fg;
+}
+
+window {
+    width: 700px;
+    height: 460px; 
+    border: 1px;
+    border-color: @black;
+    border-radius: 20px;
+    background-color: @transparent; 
+    transparency: "0";
+    location: center;
+    anchor: center;
+}
+
+mainbox {
+    orientation: vertical;
+    children: [ "contentbox", "bannerbox" ];
+    spacing: 0;
+}
+
+contentbox {
+    orientation: vertical;
+    children: [ "listview" ];
+    expand: false;
+}
+
+inputbar {
+    margin: 25px 30px 10px 30px;      
+    padding: 10px 16px;               
+    children: [ "prompt", "entry" ];
+    background-color: @transparent; 
+    border: 1px;
+    border-color: @black;   
+    border-radius: 12px;              
+    spacing: 12px;                    
+}
+
+prompt {
+    text-color: @fg;
+    font: "Hack Nerd Font Mono Bold 14";
+    vertical-align: 0.5;
+}
+
+entry {
+    placeholder: "Search apps...";
+    placeholder-color: @fg;
+    text-color: @fg; 
+    font: "Hack Nerd Font Mono 12";
+    background-color: transparent;
+    cursor-color: @fg;
+    vertical-align: 0.5;
+}
+
+listview {
+    padding: 8px 30px 12px 30px;
+    columns: 5;
+    lines: 1;
+    spacing: 14px;
+    scrollbar: false;
+    dynamic: true;
+    cycle: true;
+}
+
+element {
+    padding: 10px;
+    border-radius: 14px;
+    orientation: vertical;
+    children: [ "element-icon" ];
+    spacing: 0;
+}
+
+element selected {
+    background-color: @transparent;
+    border: 1px;
+    border-color: @black;
+    border-radius: 14px;
+}
+
+element-icon {
+    size: 96px;
+    padding: 0;
+    border-radius: 12px;
+}
+
+element-text {
+    display: none;
+}
+bannerbox {
+    orientation: horizontal;
+    children: [ "spacer-left", "banner", "spacer-right" ];
+    spacing: 0;
+}
+spacer-left {
+    expand: true;
+}
+banner {
+    background-image: url("~/.config/rofi/rofi.png", height);
+    width: 368px;
+    height: 303px;
+    expand: false;
+}
+spacer-right {
+    expand: true;
+}
