@@ -18,7 +18,6 @@ herbstclient set_layout grid
 herbstclient rule class=xwinwrap manage=off
 
 $terminal &
-xrandr --output eDP-1 --mode 1920x1080 --rate 144.00 &
 pkill -9 feh
 feh --bg-fill ~/background.png
 avizo-service &
@@ -34,7 +33,7 @@ pipewire-pulse &
 sleep 1
 wireplumber &
 
-herbstclient keybind $mod-Return spawn alacritty
+herbstclient keybind $mod-Return spawn $terminal
 herbstclient keybind $mod-q close
 herbstclient keybind $mod-r reload
 herbstclient keybind $mod-f floating toggle
